@@ -1,6 +1,6 @@
 # Node modules repository
 node_modules
 # IDE specifics
-.idea
+.idea/
 #DS_STORE
 .DS_Store
