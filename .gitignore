@@ -2,3 +2,5 @@
 node_modules
 # IDE specifics
 .idea
+#DS_STORE
+.DS_Store
