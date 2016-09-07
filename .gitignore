@@ -1,0 +1,4 @@
+# Node modules repository
+node_modules
+# IDE specifics
+.idea
