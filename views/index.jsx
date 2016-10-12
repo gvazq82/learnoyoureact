@@ -5,8 +5,8 @@ export default class TodoBox extends React.Component {
     return (
       <div className="todoBox">
         <h1>Todos</h1>
-        <TodoList data = {this.props.data} />
-        <TodoForm/>
+        <TodoList data={this.props.data}/>
+        <TodoForm />
       </div>
     );
   }
@@ -14,7 +14,9 @@ export default class TodoBox extends React.Component {
 
 class TodoList extends React.Component {
   render() {
-    var todo = this.props.data.map(function(obj) { return <Todo title={obj.title} key={obj.title}>{obj.detail}</Todo>});
+    var todo = this.props.data.map(function (obj) {
+      return <Todo title={obj.title} key={obj.title}>{obj.detail}</Todo>
+    });
     return (
       <div className="todoList">
         <table style={{border: "2px solid black"}}>
@@ -30,27 +32,26 @@ class TodoList extends React.Component {
 class Todo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {'checked': false };
+    this.state = {checked: false};
+    this.handleChange = this.handleChange.bind(this);
   }
+
+  handleChange(e) {
+    this.setState({checked: e.target.checked});
+  }
+
   render() {
     return (
       <tr>
         <td style={style.tableContent}>
-          <input type="checkbox" checked={this.state.checked} onChange={this.handleChange.bind(this)}/>
+          <input type="checkbox" checked={this.state.checked} onChange={this.handleChange}/>
         </td>
         <td style={style.tableContent}>{this.props.title}</td>
         <td style={style.tableContent}>{this.props.children}</td>
       </tr>
     );
   }
-  handleChange(e) {
-    var input = e.target;
-    this.setState({
-      otherChecked: input.checked
-    });
-  }
 }
-
 Todo.propTypes = {
   title: React.PropTypes.string.isRequired
 };
